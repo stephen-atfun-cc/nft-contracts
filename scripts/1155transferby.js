@@ -6,7 +6,7 @@ async function main () {
   // 武汉链查询余额的算法
   let cny = (await owner.getBalance()) / hre.ethers.BigNumber.from('4200000000000000')
 
-  const testAddres = '0xdE91503C0528901D4CF046952d37B7694A38c31A'
+  const receiverAddres = '0x9cf74f4bfdf7027f3af5e94790613f9874f7147d'
   const tokenid = 1
   // 初始化合约
   let Factory, contract
@@ -24,7 +24,7 @@ async function main () {
     )
     await tx.wait()
   } else {
-    const NFTBox = '0x283d3d9050BeECB5c10b3C2973A39123D03a49c6'
+    const NFTBox = '0x93341b575d87e790bc2adFA590baD43282c5bfC0'
     Factory = await ethers.getContractFactory('NFTBox')
     contract = await Factory.attach(NFTBox)
   }
@@ -33,7 +33,7 @@ async function main () {
   // 藏品转移
   const tx = await contract.transferByOwner(
     owner.address,
-    testAddres,
+    receiverAddres,
     tokenid,
     1,
     ethers.utils.formatBytes32String(''),
@@ -51,7 +51,7 @@ async function main () {
   console.log('花费： ', cny - last)
 
   console.log(owner.address, (await contract.balanceOf(owner.address, tokenid)).toNumber())
-  console.log(testAddres, (await contract.balanceOf(testAddres, tokenid)).toNumber())
+  console.log(receiverAddres, (await contract.balanceOf(receiverAddres, tokenid)).toNumber())
 }
 
 main()

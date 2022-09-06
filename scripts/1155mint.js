@@ -14,7 +14,8 @@ async function main () {
     contract = await Factory.deploy()
     await contract.deployed()
   } else {
-    const NFTBox = '0x283d3d9050BeECB5c10b3C2973A39123D03a49c6'
+    // DDC 测试
+    const NFTBox = '0x93341b575d87e790bc2adFA590baD43282c5bfC0' 
     Factory = await ethers.getContractFactory('NFTBox')
     contract = await Factory.attach(NFTBox)
   }

@@ -10,3 +10,4 @@ cache
 artifacts
 hardhat.config.prod.js
 run.sh
+scripts/test.js

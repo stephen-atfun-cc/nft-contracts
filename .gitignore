@@ -8,4 +8,5 @@ typechain-types
 #Hardhat files
 cache
 artifacts
-
+hardhat.config.prod.js
+run.sh
